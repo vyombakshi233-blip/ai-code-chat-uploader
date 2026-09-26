@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Code Chat Uploader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🤖 AI Code Chat Uploader</h1>
+      <p>Chat, Generate Code, and Upload Files</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="chat">💬 Chat</button>
+      <button class="tab-btn" data-tab="code">💻 Code Generator</button>
+      <button class="tab-btn" data-tab="upload">📁 Upload Files</button>
+      <button class="tab-btn" data-tab="files">📋 My Files</button>
+    </div>
+
+    <!-- Chat Tab -->
+    <div id="chat" class="tab-content active">
+      <div class="chat-container">
+        <div id="chatMessages" class="messages"></div>
+        <div class="input-group">
+          <input type="text" id="chatInput" placeholder="Ask me anything..." />
+          <button onclick="sendChat()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Generator Tab -->
+    <div id="code" class="tab-content">
+      <div class="code-container">
+        <div class="form-group">
+          <label>What code do you want to generate?</label>
+          <textarea id="codePrompt" placeholder="Example: Create a function to sort an array" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Language:</label>
+          <select id="language">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+            <option value="html">HTML/CSS</option>
+          </select>
+        </div>
+        <button onclick="generateCode()">Generate Code</button>
+        <div id="codeOutput" class="output"></div>
+      </div>
+    </div>
+
+    <!-- Upload Tab -->
+    <div id="upload" class="tab-content">
+      <div class="upload-container">
+        <div class="upload-section">
+          <h3>Upload File</h3>
+          <div class="drop-zone" id="fileDropZone">
+            <p>Drag and drop files here or click to select</p>
+            <input type="file" id="fileInput" hidden />
+          </div>
+          <button onclick="document.getElementById('fileInput').click()">Choose File</button>
+          <button onclick="uploadFile()">Upload File</button>
+          <div id="fileStatus" class="status"></div>
+        </div>
+
+        <div class="upload-section">
+          <h3>Upload Image</h3>
+          <div class="drop-zone" id="imageDropZone">
+            <p>Drag and drop images here or click to select</p>
+            <input type="file" id="imageInput" accept="image/*" hidden />
+          </div>
+          <button onclick="document.getElementById('imageInput').click()">Choose Image</button>
+          <button onclick="uploadImage()">Upload Image</button>
+          <div id="imageStatus" class="status"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Files Tab -->
+    <div id="files" class="tab-content">
+      <div class="files-container">
+        <button onclick="loadFiles()">Refresh Files</button>
+        <div id="filesList" class="files-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
